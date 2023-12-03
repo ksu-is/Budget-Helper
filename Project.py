@@ -1,10 +1,14 @@
+#monthList = ["january"==1,"february"==2,"march"==3,"april"==4,"may"==5,"june"==6,"july"==7,"august"==8,"september"==9,"october"==10,"november"==11,"december"==12]
+monthList = ["january","february","march","april","may","june","july","august","september","october","november","december"]
+userexpenses = []
+userInput = ""
 print("Welcome to your Budget Helper!")
-
-monthStatus = input("Enter 'A' if you would like to edit this month's budget or 'B' to move onto next month")
-if monthStatus == "A":
-    currentMonth == input("What is the current month")
-    fillerFunction
+currentMonth = input("Enter the month: ").lower()
+if currentMonth in monthList:
+    totalMoney = input("Enter your expected earnings for this month")
+    while userInput != "exit":
+        userInput == input("Name a reocurring monthly expense or type 'exit' to move on")
 else:
-    otherFillerFunction
+    print("You may have miss typed the month")
 
-def fillerfunction():
+#newMonths = ['jan']
