@@ -1,12 +1,13 @@
 
 
 
-monthList = ["january","february","mearch","april","may","june","july","august","september","october","november","december"]
+monthList = ["january","february","march","april","may","june","july","august","september","october","november","december"]
 userExpenses = []
 userExpensesOne = []
 userInput = ""
 userInputOne = ""
 restOfYear = 0
+totalMoney = 0
 print("Welcome to your Budget Helper!")
 currentMonth = input("Enter the month: ").lower()
 if currentMonth in monthList:
@@ -19,13 +20,13 @@ if currentMonth in monthList:
         userInput2 = float(input("How much is the expense? "))
         userExpenses.append((userInput,userInput2))
     while True:
-        userInputOne = input("Name a one time expense or type 'exit' to finish: ")
-        if userInputOne == "exit":
+        userInputOne = input("Name a one time expense or type 'done' to finish: ")
+        if userInputOne == "done":
             break
         userInputOne2 = float(input("How much is the one time expense? "))
-        userExpensesOne.append((userInput,userInputOne2))
+        userExpensesOne.append((userInputOne,userInputOne2))
 else:
-    print("You may have miss typed the month")
+    print("You may have mistyped the month")
 monthlyReExpTotal = 0
 monthlyOTETotal = 0
 for netTotal in userExpenses:
@@ -61,11 +62,15 @@ elif currentMonth == "december":
 else:
     print("invalid")
  
+userExpenses.sort(key=lambda x: x[1])
+userExpensesOne.sort(key=lambda x: x[1])
 netMonthTotal = int(totalMoney) - int(monthlyReExpTotal) - int(monthlyOTETotal)
 netMonthWOOT = int(totalMoney) - int(monthlyReExpTotal)
 yearNetTotal = int(netMonthTotal) * int(restOfYear)
 yearNetTotalWOOT = int(netMonthWOOT) * int(restOfYear)
 print("Your net total for the month is: " + str(netMonthTotal))
-print("Your net total for the month without one time purchases is: " + str(netMonthWOOT))
+print("Your net total for the month without one-time purchases is: " + str(netMonthWOOT))
+print("Your largest monthly payment for this month is: ", userExpenses[-1])
+print("Your largest one-time payment for this month is: ", userExpensesOne[-1])
 print("Your net total for the year is: " + str(yearNetTotal))
-print("Your net total for the year without one time purchases is: " + str(yearNetTotalWOOT))
+print("Your net total for the year without one-time purchases is: " + str(yearNetTotalWOOT))
